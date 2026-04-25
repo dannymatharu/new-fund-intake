@@ -189,6 +189,12 @@ input::placeholder, textarea::placeholder { color: var(--muted2); }
 @media (max-width: 560px) {
   .opt-grid, .opt-grid-3 { grid-template-columns: 1fr; }
 }
+.cat-group {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--green);
+  margin: 14px 0 8px; padding-top: 4px;
+}
+.cat-group:first-child { margin-top: 0; padding-top: 0; }
 .opt {
   display: flex; align-items: flex-start; gap: 10px;
   padding: 11px 14px;
@@ -579,7 +585,46 @@ input.invalid, textarea.invalid, select.invalid {
 
   <div class="field">
     <label>Specific categories in scope</label>
-    <div class="hint">Tick all that apply. The more specific, the better the matching.</div>
+    <div class="hint">Tick all that apply. The more specific, the better the matching to clubs.</div>
+
+    <div class="cat-group">Capital & facilities</div>
+    <div class="opt-grid">
+      <label class="opt"><input type="checkbox" name="categories" value="goalposts_pitch_equip"> Goalposts / pitch equipment</label>
+      <label class="opt"><input type="checkbox" name="categories" value="floodlights"> Floodlights</label>
+      <label class="opt"><input type="checkbox" name="categories" value="changing_rooms"> Changing rooms / pavilion</label>
+      <label class="opt"><input type="checkbox" name="categories" value="new_pitch"> New or refurbished pitch</label>
+      <label class="opt"><input type="checkbox" name="categories" value="pitch_maintenance"> Pitch maintenance & repair</label>
+      <label class="opt"><input type="checkbox" name="categories" value="clubhouse_storage"> Clubhouse / storage</label>
+      <label class="opt"><input type="checkbox" name="categories" value="accessibility"> Accessibility improvements</label>
+    </div>
+
+    <div class="cat-group">Equipment</div>
+    <div class="opt-grid">
+      <label class="opt"><input type="checkbox" name="categories" value="sports_equipment"> Sports equipment & kits</label>
+      <label class="opt"><input type="checkbox" name="categories" value="first_aid"> First aid / defibrillators</label>
+      <label class="opt"><input type="checkbox" name="categories" value="tech"> Technology (cameras, scoring, IT)</label>
+    </div>
+
+    <div class="cat-group">Coaching & programmes</div>
+    <div class="opt-grid">
+      <label class="opt"><input type="checkbox" name="categories" value="coach_education"> Coach education / qualifications</label>
+      <label class="opt"><input type="checkbox" name="categories" value="volunteer_training"> Volunteer training</label>
+      <label class="opt"><input type="checkbox" name="categories" value="youth_dev"> Youth development</label>
+      <label class="opt"><input type="checkbox" name="categories" value="women_girls"> Women & girls programmes</label>
+      <label class="opt"><input type="checkbox" name="categories" value="disability_inclusion"> Disability / inclusion programmes</label>
+      <label class="opt"><input type="checkbox" name="categories" value="mh_wellbeing"> Mental health & wellbeing</label>
+      <label class="opt"><input type="checkbox" name="categories" value="community_outreach"> Community outreach / engagement</label>
+      <label class="opt"><input type="checkbox" name="categories" value="schools"> Schools partnerships</label>
+    </div>
+
+    <div class="cat-group">Operations & running costs</div>
+    <div class="opt-grid">
+      <label class="opt"><input type="checkbox" name="categories" value="insurance_affiliation"> Insurance / affiliation fees</label>
+      <label class="opt"><input type="checkbox" name="categories" value="travel_transport"> Travel / transport</label>
+      <label class="opt"><input type="checkbox" name="categories" value="match_fees"> Match fees / participation subsidy</label>
+    </div>
+
+    <div class="cat-group">Sustainability & environment</div>
     <div class="opt-grid">
       <label class="opt"><input type="checkbox" name="categories" value="solar"> Solar PV / renewable energy</label>
       <label class="opt"><input type="checkbox" name="categories" value="led"> LED lighting retrofit</label>
@@ -588,29 +633,38 @@ input.invalid, textarea.invalid, select.invalid {
       <label class="opt"><input type="checkbox" name="categories" value="water"> Water conservation</label>
       <label class="opt"><input type="checkbox" name="categories" value="biodiversity"> Biodiversity / rewilding</label>
       <label class="opt"><input type="checkbox" name="categories" value="trees"> Tree planting</label>
-      <label class="opt"><input type="checkbox" name="categories" value="pitch"> Pitch maintenance (sustainable)</label>
-      <label class="opt"><input type="checkbox" name="categories" value="cycling"> Community cycling / active travel</label>
+      <label class="opt"><input type="checkbox" name="categories" value="cycling"> Active travel / cycling</label>
       <label class="opt"><input type="checkbox" name="categories" value="education"> Environmental education</label>
       <label class="opt"><input type="checkbox" name="categories" value="audit"> Carbon audits / assessments</label>
-      <label class="opt"><input type="checkbox" name="categories" value="other"> Other</label>
+    </div>
+
+    <div class="cat-group">Other</div>
+    <div class="opt-grid">
+      <label class="opt"><input type="checkbox" name="categories" value="other"> Other (please describe in summary or out-of-scope)</label>
     </div>
   </div>
 
   <div class="field">
     <label for="out_of_scope">What's explicitly out of scope</label>
-    <div class="hint">Examples: "no fossil-fuel related infrastructure", "no offsetting schemes", "not pitch floodlighting". Clubs need to know before they apply.</div>
+    <div class="hint">Things you won't fund. Examples: "no salaries or staff costs", "no professional/elite sport", "no individual athletes", "no overseas travel", "not floodlights". Clubs need to know before they apply.</div>
     <textarea id="out_of_scope" name="out_of_scope" rows="3" maxlength="800"></textarea>
   </div>
 
   <div class="field">
     <label>Baseline requirements before applying</label>
-    <div class="hint">Many environmental funds expect clubs to have measured their current position before funding interventions.</div>
-    <div class="opt-grid opt-grid-3">
-      <label class="opt"><input type="checkbox" name="baseline" value="none"> None</label>
-      <label class="opt"><input type="checkbox" name="baseline" value="carbon_audit"> Carbon audit</label>
-      <label class="opt"><input type="checkbox" name="baseline" value="t4n"> Together for Nature</label>
-      <label class="opt"><input type="checkbox" name="baseline" value="energy_audit"> Energy audit</label>
-      <label class="opt"><input type="checkbox" name="baseline" value="other"> Other</label>
+    <div class="hint">Things a club must already have or have done before they can apply. Tick all that apply, or "None" if there are no baseline requirements.</div>
+    <div class="opt-grid">
+      <label class="opt"><input type="checkbox" name="baseline" value="none"> None — any club can apply</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="ngb_affiliation"> NGB or CFA affiliation</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="constitution"> Formal constitution / governance</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="safeguarding"> Safeguarding policy & training</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="charter_standard"> Charter standard / quality mark</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="financial_records"> Recent accounts / financial records</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="track_record"> Track record of similar work</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="energy_audit"> Energy audit (sustainability funds)</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="carbon_audit"> Carbon audit (sustainability funds)</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="t4n"> Together for Nature assessment</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="other"> Other (specify in summary)</label>
     </div>
   </div>
 
@@ -619,8 +673,9 @@ input.invalid, textarea.invalid, select.invalid {
     <div class="opt-grid opt-grid-3">
       <label class="opt"><input type="checkbox" name="reporting" value="photos"> Photos</label>
       <label class="opt"><input type="checkbox" name="reporting" value="receipts"> Invoices / receipts</label>
-      <label class="opt"><input type="checkbox" name="reporting" value="carbon_calc"> Carbon calculation</label>
+      <label class="opt"><input type="checkbox" name="reporting" value="participation_numbers"> Participation numbers</label>
       <label class="opt"><input type="checkbox" name="reporting" value="before_after"> Before / after data</label>
+      <label class="opt"><input type="checkbox" name="reporting" value="impact_metrics"> Impact metrics (carbon, social value, etc.)</label>
       <label class="opt"><input type="checkbox" name="reporting" value="case_study"> Case study write-up</label>
       <label class="opt"><input type="checkbox" name="reporting" value="annual_update"> Annual update</label>
     </div>
