@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Fund Intake — Funding Bench</title>
+<meta name="description" content="If you run a fund for grassroots sports clubs and want it listed on Funding Bench, fill in this form.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --card: #1c2333;
+  --card2: #21293d;
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.14);
+  --border3: rgba(255,255,255,0.22);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.55);
+  --muted2: rgba(255,255,255,0.30);
+  --green: #3dd68c;
+  --green2: #2db876;
+  --amber: #f0b429;
+  --red: #fc5c7d;
+  --blue: #58a6ff;
+  --teal: #39d0c8;
+  --r: 14px;
+  --r-sm: 8px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 40% at 15% 10%, rgba(61,214,140,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 85% 90%, rgba(88,166,255,0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Topbar */
+.topbar {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(13,17,23,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  height: 56px;
+  display: flex; align-items: center;
+  padding: 0 24px; gap: 12px;
+}
+.tb-logo {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--green), var(--teal));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 10px; color: #0d1117;
+  letter-spacing: -0.02em; flex-shrink: 0;
+}
+.tb-text { flex: 1; min-width: 0; }
+.tb-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: -0.01em; }
+.tb-sub { font-size: 0.6rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+.tb-badge {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 100px;
+  background: rgba(61,214,140,0.12); color: var(--green);
+  border: 1px solid rgba(61,214,140,0.3);
+}
+
+/* Container */
+.wrap { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+
+/* Hero */
+.hero { margin-bottom: 40px; }
+.hero-eyebrow {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--green); margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Syne', sans-serif; font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  letter-spacing: -0.02em; margin-bottom: 12px;
+}
+.hero-lede {
+  color: var(--muted); font-size: 1.02rem; max-width: 620px; margin-bottom: 8px;
+}
+.hero-meta {
+  margin-top: 18px; display: flex; gap: 20px; flex-wrap: wrap;
+  color: var(--muted2); font-size: 0.82rem;
+}
+.hero-meta span::before { content: '•'; margin-right: 8px; color: var(--muted2); }
+.hero-meta span:first-child::before { content: none; }
+
+.autosave-indicator {
+  font-size: 0.72rem; color: var(--muted2); margin-top: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.autosave-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--muted2); transition: background .2s;
+}
+.autosave-dot.saved { background: var(--green); }
+
+/* Section */
+.section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 32px 28px;
+  margin-bottom: 20px;
+}
+.section-header { margin-bottom: 24px; }
+.section-num {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+  color: var(--green); text-transform: uppercase; margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Syne', sans-serif; font-weight: 600;
+  font-size: 1.35rem; letter-spacing: -0.01em;
+}
+.section-desc { color: var(--muted); font-size: 0.88rem; margin-top: 8px; }
+
+/* Field */
+.field { margin-bottom: 22px; }
+.field:last-child { margin-bottom: 0; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+@media (max-width: 560px) {
+  .field-row, .field-row-3 { grid-template-columns: 1fr; }
+}
+
+.field label {
+  display: block;
+  font-weight: 500; font-size: 0.92rem;
+  color: var(--text); margin-bottom: 4px;
+}
+.req { color: var(--red); margin-left: 4px; font-weight: 500; }
+.optional {
+  color: var(--muted2); font-size: 0.75rem; margin-left: 8px; font-weight: 400;
+}
+.hint {
+  font-size: 0.8rem; color: var(--muted); margin-bottom: 10px; line-height: 1.45;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 11px 14px;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  color: var(--text);
+  font-family: inherit; font-size: 0.94rem;
+  transition: border-color .15s, background .15s;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--green);
+  background: #1a2133;
+}
+textarea { resize: vertical; min-height: 80px; font-family: inherit; }
+input::placeholder, textarea::placeholder { color: var(--muted2); }
+
+/* Checkbox / radio grids */
+.opt-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;
+}
+.opt-grid-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 560px) {
+  .opt-grid, .opt-grid-3 { grid-template-columns: 1fr; }
+}
+.opt {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 11px 14px;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+  font-size: 0.9rem;
+}
+.opt:hover { border-color: var(--border3); }
+.opt input {
+  margin-top: 2px;
+  accent-color: var(--green);
+  width: auto; height: auto;
+  flex-shrink: 0;
+}
+.opt-with-input input[type="text"],
+.opt-with-input input[type="number"] {
+  margin-top: 8px; width: 100%;
+  padding: 8px 12px; font-size: 0.88rem;
+}
+.opt.selected { border-color: var(--green); background: rgba(61,214,140,0.05); }
+
+/* Sub-inputs shown inline after an opt */
+.conditional { margin-top: 10px; display: none; }
+.conditional.show { display: block; }
+
+/* Inline dual range */
+.range-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: end;
+}
+@media (max-width: 560px) {
+  .range-row { grid-template-columns: 1fr; }
+}
+.range-row .range-label {
+  font-size: 0.76rem; color: var(--muted); margin-bottom: 4px;
+}
+
+/* Submit bar */
+.submit-bar {
+  margin-top: 32px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-family: inherit; font-weight: 600; font-size: 0.94rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .12s, background .15s, border-color .15s;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--green), var(--green2));
+  color: #0d1117;
+}
+.btn-primary:hover { transform: translateY(-1px); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.btn-secondary {
+  background: transparent; color: var(--muted);
+  border-color: var(--border2);
+}
+.btn-secondary:hover { color: var(--text); border-color: var(--border3); }
+.submit-error {
+  flex: 1 1 auto;
+  color: var(--red); font-size: 0.88rem;
+}
+
+/* Errors */
+.field-error {
+  color: var(--red); font-size: 0.82rem; margin-top: 6px;
+}
+input.invalid, textarea.invalid, select.invalid {
+  border-color: var(--red);
+}
+
+/* Success state */
+#success {
+  display: none;
+  background: var(--card);
+  border: 1px solid rgba(61,214,140,0.3);
+  border-radius: var(--r);
+  padding: 48px 36px;
+  text-align: center;
+}
+#success.show { display: block; }
+.success-icon {
+  width: 64px; height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green), var(--teal));
+  display: flex; align-items: center; justify-content: center;
+  color: #0d1117; font-size: 30px; font-weight: 700;
+}
+#success h2 {
+  font-family: 'Syne', sans-serif; font-weight: 700;
+  font-size: 1.6rem; margin-bottom: 12px;
+}
+#success p { color: var(--muted); margin-bottom: 8px; }
+.reference-pill {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 18px;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 100px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+}
+
+/* Footer */
+.footer {
+  margin-top: 60px; padding: 28px 0 0;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap;
+}
+.footer-brand { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.92rem; }
+.footer-links { display: flex; gap: 14px; font-size: 0.78rem; color: var(--muted); }
+.footer-links a { color: var(--green); text-decoration: none; }
+.footer-links a:hover { text-decoration: underline; }
+.footer-small { font-size: 0.72rem; color: var(--muted2); margin-top: 10px; width: 100%; }
+</style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="tb-logo">FB</div>
+  <div class="tb-text">
+    <div class="tb-name">Funding Bench</div>
+    <div class="tb-sub">FMHA · withinu</div>
+  </div>
+  <div class="tb-badge">Intake</div>
+</div>
+
+<div class="wrap">
+
+<!-- Success state (replaces form on submit) -->
+<div id="success" role="status" aria-live="polite">
+  <div class="success-icon">✓</div>
+  <h2>Submission received</h2>
+  <p>Thank you — we have your fund details and will be in touch within a few working days.</p>
+  <p>Keep this reference for any follow-up:</p>
+  <div class="reference-pill" id="reference-code">—</div>
+</div>
+
+<!-- Form -->
+<form id="intake-form">
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-eyebrow">New Fund Intake</div>
+  <h1>Tell us about your fund</h1>
+  <p class="hero-lede">
+    If you run a fund for grassroots sports clubs and want it listed on Funding Bench, please fill this in.
+    It takes about 15–20 minutes. Anything you don't know yet, leave blank or write "TBC" — we can follow up later.
+  </p>
+  <div class="hero-meta">
+    <span>Funding Bench · FMHA · withinu</span>
+    <span>Fields marked <span style="color: var(--red);">*</span> are required</span>
+  </div>
+  <div class="autosave-indicator">
+    <span class="autosave-dot" id="autosave-dot"></span>
+    <span id="autosave-text">Your progress is saved automatically in this browser.</span>
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">Section 1 of 6</div>
+    <div class="section-title">Fund overview</div>
+    <div class="section-desc">The basics. Most of this ends up on the grant card that clubs see.</div>
+  </div>
+
+  <div class="field">
+    <label for="fund_name">Fund name <span class="req">*</span></label>
+    <div class="hint">The name clubs will see on the grant card.</div>
+    <input type="text" id="fund_name" name="fund_name" required maxlength="200" autocomplete="off">
+  </div>
+
+  <div class="field">
+    <label for="funder_name">Funder — legal entity or group behind the fund <span class="req">*</span></label>
+    <div class="hint">For example "The Smith Family Foundation", "Green Pitch CIO", or "philanthropic collective: Ms A, Mr B".</div>
+    <input type="text" id="funder_name" name="funder_name" required maxlength="200">
+  </div>
+
+  <div class="field">
+    <label>Funder type <span class="req">*</span></label>
+    <div class="hint">Pick the closest match.</div>
+    <div class="opt-grid opt-grid-3">
+      <label class="opt"><input type="radio" name="funder_type" value="registered_charity"> Registered charity</label>
+      <label class="opt"><input type="radio" name="funder_type" value="cic"> CIC</label>
+      <label class="opt"><input type="radio" name="funder_type" value="cio"> CIO</label>
+      <label class="opt"><input type="radio" name="funder_type" value="limited_company"> Limited company</label>
+      <label class="opt"><input type="radio" name="funder_type" value="informal_group"> Informal philanthropist group</label>
+      <label class="opt"><input type="radio" name="funder_type" value="individual"> Individual donor</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="registration_number">Charity Commission / Companies House number <span class="optional">optional</span></label>
+    <div class="hint">Leave blank if the fund is informal or not yet registered.</div>
+    <input type="text" id="registration_number" name="registration_number" maxlength="50">
+  </div>
+
+  <div class="field">
+    <label for="website_url">Fund website URL <span class="optional">optional</span></label>
+    <div class="hint">Where clubs can find full detail. If you don't have one yet, leave blank.</div>
+    <input type="url" id="website_url" name="website_url" placeholder="https://...">
+  </div>
+
+  <div class="field">
+    <label for="summary">One-sentence description for the grant card <span class="req">*</span></label>
+    <div class="hint">Plain English. Example: "Supports grassroots sports clubs with capital costs of solar installations, EV charging, and water conservation." Avoid jargon.</div>
+    <textarea id="summary" name="summary" required rows="3" maxlength="500" minlength="20"></textarea>
+  </div>
+
+  <div class="field">
+    <label>Grant size <span class="req">*</span></label>
+    <div class="hint">Enter minimum and maximum, or a single fixed amount.</div>
+    <div class="range-row">
+      <div>
+        <div class="range-label">Minimum (£)</div>
+        <input type="number" name="amount_min" min="0" step="100" placeholder="e.g. 1000">
+      </div>
+      <div>
+        <div class="range-label">Maximum (£)</div>
+        <input type="number" name="amount_max" min="0" step="100" placeholder="e.g. 25000">
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Match funding required?</label>
+    <div class="hint">Match funding means the club has to put up part of the cost themselves.</div>
+    <div class="opt-grid">
+      <label class="opt"><input type="radio" name="match_required" value="no"> No match required</label>
+      <label class="opt opt-with-input" data-reveal="match_percent">
+        <span style="display:flex;align-items:flex-start;gap:10px;">
+          <input type="radio" name="match_required" value="yes">
+          <span>Yes — what percentage?</span>
+        </span>
+        <div class="conditional" id="match_percent_wrap">
+          <input type="number" name="match_percent" min="1" max="100" placeholder="e.g. 25" style="max-width:140px;">
+          <span style="color:var(--muted);font-size:0.82rem;margin-left:6px;">%</span>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Deadline model <span class="req">*</span></label>
+    <div class="opt-grid opt-grid-3">
+      <label class="opt"><input type="radio" name="deadline_model" value="rolling"> Rolling — any time</label>
+      <label class="opt"><input type="radio" name="deadline_model" value="annual"> Annual window</label>
+      <label class="opt"><input type="radio" name="deadline_model" value="specific"> Specific cut-off date</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="next_deadline">Next deadline <span class="optional">if specific</span></label>
+    <input type="date" id="next_deadline" name="next_deadline">
+  </div>
+
+  <div class="field">
+    <label>Current status <span class="req">*</span></label>
+    <div class="opt-grid">
+      <label class="opt"><input type="radio" name="status" value="live"> Live — open to applications</label>
+      <label class="opt"><input type="radio" name="status" value="opening_soon"> Opening soon</label>
+      <label class="opt"><input type="radio" name="status" value="invite_only"> Invite-only</label>
+      <label class="opt"><input type="radio" name="status" value="paused"> Paused / closed</label>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">Section 2 of 6</div>
+    <div class="section-title">Eligibility — who can apply</div>
+    <div class="section-desc">This is what drives which clubs see your fund. Be as specific as possible.</div>
+  </div>
+
+  <div class="field">
+    <label>Countries clubs can apply from <span class="req">*</span></label>
+    <div class="opt-grid opt-grid-3">
+      <label class="opt"><input type="checkbox" name="countries" value="england"> England</label>
+      <label class="opt"><input type="checkbox" name="countries" value="scotland"> Scotland</label>
+      <label class="opt"><input type="checkbox" name="countries" value="wales"> Wales</label>
+      <label class="opt"><input type="checkbox" name="countries" value="northern_ireland"> Northern Ireland</label>
+      <label class="opt"><input type="checkbox" name="countries" value="uk_wide"> UK-wide</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Legal structures accepted</label>
+    <div class="hint">Most grassroots clubs are CASCs or unincorporated. Some philanthropist funds restrict to charities for tax reasons.</div>
+    <div class="opt-grid opt-grid-3">
+      <label class="opt"><input type="checkbox" name="legal_structures" value="casc"> CASC</label>
+      <label class="opt"><input type="checkbox" name="legal_structures" value="charity"> Registered charity</label>
+      <label class="opt"><input type="checkbox" name="legal_structures" value="cic"> CIC</label>
+      <label class="opt"><input type="checkbox" name="legal_structures" value="unincorporated"> Unincorporated association</label>
+      <label class="opt"><input type="checkbox" name="legal_structures" value="ltd"> Limited by guarantee</label>
+      <label class="opt"><input type="checkbox" name="legal_structures" value="any"> Any structure</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Sports covered</label>
+    <div class="hint">Tick all that apply, or tick "any sport" if the fund is sport-agnostic.</div>
+    <div class="opt-grid opt-grid-3">
+      <label class="opt"><input type="checkbox" name="sports" value="any"> Any sport</label>
+      <label class="opt"><input type="checkbox" name="sports" value="football"> Football</label>
+      <label class="opt"><input type="checkbox" name="sports" value="cricket"> Cricket</label>
+      <label class="opt"><input type="checkbox" name="sports" value="rugby_union"> Rugby union</label>
+      <label class="opt"><input type="checkbox" name="sports" value="rugby_league"> Rugby league</label>
+      <label class="opt"><input type="checkbox" name="sports" value="netball"> Netball</label>
+      <label class="opt"><input type="checkbox" name="sports" value="hockey"> Hockey</label>
+      <label class="opt"><input type="checkbox" name="sports" value="athletics"> Athletics</label>
+      <label class="opt"><input type="checkbox" name="sports" value="tennis"> Tennis</label>
+      <label class="opt"><input type="checkbox" name="sports" value="cycling"> Cycling</label>
+      <label class="opt"><input type="checkbox" name="sports" value="other"> Other</label>
+    </div>
+    <input type="text" name="sports_other" placeholder="If other, please specify" style="margin-top:10px;">
+  </div>
+
+  <div class="field">
+    <label>Audience priorities</label>
+    <div class="hint">Is the fund targeted at particular groups, or open to any grassroots club?</div>
+    <div class="opt-grid opt-grid-3">
+      <label class="opt"><input type="checkbox" name="audiences" value="youth"> Youth (under 18)</label>
+      <label class="opt"><input type="checkbox" name="audiences" value="women_girls"> Women & girls</label>
+      <label class="opt"><input type="checkbox" name="audiences" value="disability"> Disability sport</label>
+      <label class="opt"><input type="checkbox" name="audiences" value="deprivation"> Deprivation priority</label>
+      <label class="opt"><input type="checkbox" name="audiences" value="ethnic_minority"> Ethnic minority communities</label>
+      <label class="opt"><input type="checkbox" name="audiences" value="any"> No specific priority</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Deprivation index priority?</label>
+    <div class="hint">If the fund prioritises deprived areas, tell us which index and which deciles (e.g. "IMD 1 to 4").</div>
+    <div class="opt-grid">
+      <label class="opt"><input type="radio" name="deprivation_priority" value="none"> No deprivation priority</label>
+      <label class="opt"><input type="radio" name="deprivation_priority" value="imd"> IMD (England)</label>
+      <label class="opt"><input type="radio" name="deprivation_priority" value="simd"> SIMD (Scotland)</label>
+      <label class="opt"><input type="radio" name="deprivation_priority" value="other"> Other</label>
+    </div>
+    <div class="range-row" style="margin-top:10px;">
+      <div>
+        <div class="range-label">From decile</div>
+        <input type="number" name="deprivation_min_decile" min="1" max="10" placeholder="e.g. 1">
+      </div>
+      <div>
+        <div class="range-label">To decile</div>
+        <input type="number" name="deprivation_max_decile" min="1" max="10" placeholder="e.g. 4">
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="geographic_restrictions">Geographic restrictions beyond country <span class="optional">optional</span></label>
+    <div class="hint">Examples: "London only", "Yorkshire Active Partnership area", "within 50 miles of Manchester". Leave blank if no restriction.</div>
+    <textarea id="geographic_restrictions" name="geographic_restrictions" rows="2" maxlength="500"></textarea>
+  </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">Section 3 of 6</div>
+    <div class="section-title">What the fund covers</div>
+    <div class="section-desc">Clubs need to know what they can and can't spend the money on.</div>
+  </div>
+
+  <div class="field">
+    <label>Types of work funded <span class="req">*</span></label>
+    <div class="opt-grid opt-grid-3">
+      <label class="opt"><input type="radio" name="work_type" value="capital"> Capital (physical assets)</label>
+      <label class="opt"><input type="radio" name="work_type" value="revenue"> Revenue (programmes)</label>
+      <label class="opt"><input type="radio" name="work_type" value="both"> Both</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Specific categories in scope</label>
+    <div class="hint">Tick all that apply. The more specific, the better the matching.</div>
+    <div class="opt-grid">
+      <label class="opt"><input type="checkbox" name="categories" value="solar"> Solar PV / renewable energy</label>
+      <label class="opt"><input type="checkbox" name="categories" value="led"> LED lighting retrofit</label>
+      <label class="opt"><input type="checkbox" name="categories" value="insulation"> Insulation / heat pumps</label>
+      <label class="opt"><input type="checkbox" name="categories" value="ev"> EV charging</label>
+      <label class="opt"><input type="checkbox" name="categories" value="water"> Water conservation</label>
+      <label class="opt"><input type="checkbox" name="categories" value="biodiversity"> Biodiversity / rewilding</label>
+      <label class="opt"><input type="checkbox" name="categories" value="trees"> Tree planting</label>
+      <label class="opt"><input type="checkbox" name="categories" value="pitch"> Pitch maintenance (sustainable)</label>
+      <label class="opt"><input type="checkbox" name="categories" value="cycling"> Community cycling / active travel</label>
+      <label class="opt"><input type="checkbox" name="categories" value="education"> Environmental education</label>
+      <label class="opt"><input type="checkbox" name="categories" value="audit"> Carbon audits / assessments</label>
+      <label class="opt"><input type="checkbox" name="categories" value="other"> Other</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="out_of_scope">What's explicitly out of scope</label>
+    <div class="hint">Examples: "no fossil-fuel related infrastructure", "no offsetting schemes", "not pitch floodlighting". Clubs need to know before they apply.</div>
+    <textarea id="out_of_scope" name="out_of_scope" rows="3" maxlength="800"></textarea>
+  </div>
+
+  <div class="field">
+    <label>Baseline requirements before applying</label>
+    <div class="hint">Many environmental funds expect clubs to have measured their current position before funding interventions.</div>
+    <div class="opt-grid opt-grid-3">
+      <label class="opt"><input type="checkbox" name="baseline" value="none"> None</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="carbon_audit"> Carbon audit</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="t4n"> Together for Nature</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="energy_audit"> Energy audit</label>
+      <label class="opt"><input type="checkbox" name="baseline" value="other"> Other</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Reporting expected from successful applicants</label>
+    <div class="opt-grid opt-grid-3">
+      <label class="opt"><input type="checkbox" name="reporting" value="photos"> Photos</label>
+      <label class="opt"><input type="checkbox" name="reporting" value="receipts"> Invoices / receipts</label>
+      <label class="opt"><input type="checkbox" name="reporting" value="carbon_calc"> Carbon calculation</label>
+      <label class="opt"><input type="checkbox" name="reporting" value="before_after"> Before / after data</label>
+      <label class="opt"><input type="checkbox" name="reporting" value="case_study"> Case study write-up</label>
+      <label class="opt"><input type="checkbox" name="reporting" value="annual_update"> Annual update</label>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">Section 4 of 6</div>
+    <div class="section-title">Governance and track record</div>
+    <div class="section-desc">Helps us describe the fund accurately and gives clubs confidence it's real.</div>
+  </div>
+
+  <div class="field">
+    <label for="total_committed">Total amount committed to the fund overall</label>
+    <div class="hint">For example: "£500k over 3 years", "£50k for year one".</div>
+    <input type="text" id="total_committed" name="total_committed" maxlength="200">
+  </div>
+
+  <div class="field-row">
+    <div class="field">
+      <label for="grants_planned">Grants planned this year</label>
+      <div class="hint">Approximate number of awards.</div>
+      <input type="number" id="grants_planned" name="grants_planned" min="0" placeholder="e.g. 20">
+    </div>
+    <div class="field">
+      <label for="grants_awarded">Grants awarded to date</label>
+      <div class="hint">Write "0" if launching with Funding Bench.</div>
+      <input type="text" id="grants_awarded" name="grants_awarded" maxlength="100">
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Who decides on applications</label>
+    <div class="opt-grid">
+      <label class="opt"><input type="radio" name="decision_maker" value="single"> Single decision-maker</label>
+      <label class="opt"><input type="radio" name="decision_maker" value="panel"> Small panel</label>
+      <label class="opt"><input type="radio" name="decision_maker" value="trustees"> Board of trustees</label>
+      <label class="opt"><input type="radio" name="decision_maker" value="mixed"> Mixed panel with external advisors</label>
+    </div>
+    <input type="text" name="decision_maker_detail" placeholder="Optional: name(s) or panel size" style="margin-top:10px;">
+  </div>
+
+  <div class="field-row">
+    <div class="field">
+      <label for="turnaround_decision">Turnaround: application → decision</label>
+      <input type="text" id="turnaround_decision" name="turnaround_decision" placeholder="e.g. 4 weeks" maxlength="50">
+    </div>
+    <div class="field">
+      <label for="turnaround_payment">Turnaround: decision → payment</label>
+      <input type="text" id="turnaround_payment" name="turnaround_payment" placeholder="e.g. 2 weeks" maxlength="50">
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Funding horizon</label>
+    <div class="opt-grid opt-grid-3">
+      <label class="opt"><input type="radio" name="horizon" value="single_year"> Single year</label>
+      <label class="opt"><input type="radio" name="horizon" value="multi_year"> Multi-year commitment</label>
+      <label class="opt"><input type="radio" name="horizon" value="open_ended"> Open-ended</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="example_awards">Example awards to date, if any</label>
+    <div class="hint">Two or three clubs/projects we can reference: name + rough amount + what the grant funded. If none yet, write "none".</div>
+    <textarea id="example_awards" name="example_awards" rows="4" maxlength="1200"></textarea>
+  </div>
+</div>
+
+<!-- SECTION 5 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">Section 5 of 6</div>
+    <div class="section-title">How clubs apply</div>
+    <div class="section-desc">The practical route from interest to application.</div>
+  </div>
+
+  <div class="field">
+    <label>Application method <span class="req">*</span></label>
+    <div class="opt-grid">
+      <label class="opt"><input type="radio" name="application_method" value="portal"> Online portal</label>
+      <label class="opt"><input type="radio" name="application_method" value="email"> Email application</label>
+      <label class="opt"><input type="radio" name="application_method" value="phone_first"> Phone first, then written</label>
+      <label class="opt"><input type="radio" name="application_method" value="form"> Standard form (attached)</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="application_route">Application URL or email <span class="req">*</span></label>
+    <div class="hint">Where clubs send their application.</div>
+    <input type="text" id="application_route" name="application_route" required maxlength="300" placeholder="URL or email address">
+  </div>
+
+  <div class="field">
+    <label>Materials clubs must include</label>
+    <div class="opt-grid">
+      <label class="opt"><input type="checkbox" name="materials" value="budget"> Project budget</label>
+      <label class="opt"><input type="checkbox" name="materials" value="quotes"> Contractor quotes</label>
+      <label class="opt"><input type="checkbox" name="materials" value="photos"> Photos of current site</label>
+      <label class="opt"><input type="checkbox" name="materials" value="letter_support"> Letter of support (CFA / local authority)</label>
+      <label class="opt"><input type="checkbox" name="materials" value="accounts"> Annual accounts</label>
+      <label class="opt"><input type="checkbox" name="materials" value="safeguarding"> Safeguarding policy</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Payment model</label>
+    <div class="opt-grid">
+      <label class="opt"><input type="radio" name="payment_model" value="lump_sum"> Single lump sum on award</label>
+      <label class="opt"><input type="radio" name="payment_model" value="milestones"> Milestone payments against invoices</label>
+      <label class="opt"><input type="radio" name="payment_model" value="reimbursement"> Reimbursement after club pays</label>
+      <label class="opt"><input type="radio" name="payment_model" value="staged"> Staged over project lifetime</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="conditions">Restrictions or conditions on successful applicants</label>
+    <div class="hint">Examples: "must agree to be named in press release", "no fossil-fuel sponsorship during grant period", "must share case study within 12 months".</div>
+    <textarea id="conditions" name="conditions" rows="3" maxlength="800"></textarea>
+  </div>
+</div>
+
+<!-- SECTION 6 -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">Section 6 of 6</div>
+    <div class="section-title">Contacts and sign-off</div>
+    <div class="section-desc">Where we reach you to confirm details.</div>
+  </div>
+
+  <div class="field-row">
+    <div class="field">
+      <label for="contact_name">Your name <span class="req">*</span></label>
+      <input type="text" id="contact_name" name="contact_name" required maxlength="100" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="contact_role">Your role <span class="optional">optional</span></label>
+      <input type="text" id="contact_role" name="contact_role" maxlength="100">
+    </div>
+  </div>
+
+  <div class="field-row">
+    <div class="field">
+      <label for="contact_email">Your email <span class="req">*</span></label>
+      <input type="email" id="contact_email" name="contact_email" required maxlength="200" autocomplete="email">
+    </div>
+    <div class="field">
+      <label for="contact_phone">Your phone <span class="optional">optional</span></label>
+      <input type="tel" id="contact_phone" name="contact_phone" maxlength="50" autocomplete="tel">
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="press_contact">Press / communications contact <span class="optional">optional</span></label>
+    <div class="hint">Leave blank if same as above.</div>
+    <textarea id="press_contact" name="press_contact" rows="2" maxlength="400" placeholder="Name, role, email"></textarea>
+  </div>
+
+  <div class="field">
+    <label for="citation_preference">Preferred way for clubs to cite or credit the fund</label>
+    <div class="hint">For example: "Funded by the Smith Family Foundation. Logo attached for use on club communications."</div>
+    <textarea id="citation_preference" name="citation_preference" rows="2" maxlength="400"></textarea>
+  </div>
+
+  <div class="field">
+    <label for="anything_else">Anything else we should know</label>
+    <div class="hint">Anything you'd like to flag that these questions didn't cover.</div>
+    <textarea id="anything_else" name="anything_else" rows="4" maxlength="1200"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="opt" style="background: transparent; padding: 0; border: 0;">
+      <input type="checkbox" id="confirm_accuracy" name="confirm_accuracy" required>
+      <span>I confirm the information above is accurate to the best of my knowledge and that I have authority to list this fund publicly via Funding Bench. <span class="req">*</span></span>
+    </label>
+  </div>
+</div>
+
+<!-- Submit -->
+<div class="submit-bar">
+  <button type="submit" class="btn btn-primary" id="submit-btn">Submit fund intake</button>
+  <button type="button" class="btn btn-secondary" id="clear-btn">Clear form</button>
+  <div class="submit-error" id="submit-error" role="alert"></div>
+</div>
+
+</form>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-brand">FMHA · withinu</div>
+  <div class="footer-links">
+    <a href="https://thefmha.com" target="_blank" rel="noopener">thefmha.com</a>
+    <a href="https://withinu.net" target="_blank" rel="noopener">withinu.net</a>
+  </div>
+  <div class="footer-small">Submissions are reviewed manually. We typically respond within a few working days. Data is stored securely and used only to list your fund on Funding Bench.</div>
+</div>
+
+</div>
+
+<script>
+// --- Config ---
+const SUPABASE_URL = 'https://puafunzdaronevidsdve.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB1YWZ1bnpkYXJvbmV2aWRzZHZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2OTI4ODIsImV4cCI6MjA5MDI2ODg4Mn0.7rmsRtzqrp-wTNWANDedjHF8Mgwxtbfzwr-eEYoM30w';
+const ENDPOINT = SUPABASE_URL + '/functions/v1/submit-funder-intake';
+const STORAGE_KEY = 'funder_intake_draft_v1';
+
+const form = document.getElementById('intake-form');
+const successEl = document.getElementById('success');
+const submitBtn = document.getElementById('submit-btn');
+const submitError = document.getElementById('submit-error');
+const clearBtn = document.getElementById('clear-btn');
+const autosaveDot = document.getElementById('autosave-dot');
+const autosaveText = document.getElementById('autosave-text');
+
+// --- Collect form data into a plain object ---
+function collectData() {
+  const data = {};
+  const fd = new FormData(form);
+  // Group checkboxes
+  const keys = new Set();
+  form.querySelectorAll('input, textarea, select').forEach(el => {
+    if (el.name) keys.add(el.name);
+  });
+  keys.forEach(key => {
+    const els = form.querySelectorAll(`[name="${key}"]`);
+    if (!els.length) return;
+    const first = els[0];
+    if (first.type === 'checkbox' && els.length > 1) {
+      data[key] = Array.from(els).filter(e => e.checked).map(e => e.value);
+    } else if (first.type === 'checkbox') {
+      data[key] = first.checked;
+    } else if (first.type === 'radio') {
+      const picked = Array.from(els).find(e => e.checked);
+      data[key] = picked ? picked.value : null;
+    } else {
+      data[key] = first.value.trim();
+    }
+  });
+  return data;
+}
+
+// --- Apply saved data to the form ---
+function applyData(data) {
+  if (!data) return;
+  Object.keys(data).forEach(key => {
+    const els = form.querySelectorAll(`[name="${key}"]`);
+    if (!els.length) return;
+    const first = els[0];
+    const val = data[key];
+    if (first.type === 'checkbox' && els.length > 1) {
+      const arr = Array.isArray(val) ? val : [];
+      els.forEach(e => { e.checked = arr.includes(e.value); });
+    } else if (first.type === 'checkbox') {
+      first.checked = !!val;
+    } else if (first.type === 'radio') {
+      els.forEach(e => { e.checked = e.value === val; });
+    } else {
+      first.value = val ?? '';
+    }
+  });
+  updateVisualSelections();
+}
+
+function updateVisualSelections() {
+  // Add .selected class to opt labels whose input is checked
+  form.querySelectorAll('.opt').forEach(lbl => {
+    const input = lbl.querySelector('input[type="radio"], input[type="checkbox"]');
+    if (input && input.checked) lbl.classList.add('selected');
+    else lbl.classList.remove('selected');
+  });
+  // Show/hide conditional blocks
+  const matchYes = form.querySelector('input[name="match_required"][value="yes"]');
+  const matchWrap = document.getElementById('match_percent_wrap');
+  if (matchYes && matchWrap) {
+    matchWrap.classList.toggle('show', matchYes.checked);
+  }
+}
+
+// --- Autosave ---
+let autosaveTimer;
+function scheduleSave() {
+  clearTimeout(autosaveTimer);
+  autosaveDot.classList.remove('saved');
+  autosaveText.textContent = 'Saving…';
+  autosaveTimer = setTimeout(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(collectData()));
+      autosaveDot.classList.add('saved');
+      autosaveText.textContent = 'Draft saved in this browser. Close and come back later if you need to.';
+    } catch (e) {
+      autosaveText.textContent = 'Could not save draft — your browser may be blocking storage.';
+    }
+  }, 400);
+}
+
+// --- Restore on load ---
+try {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (raw) {
+    applyData(JSON.parse(raw));
+    autosaveDot.classList.add('saved');
+    autosaveText.textContent = 'Restored your saved draft.';
+  }
+} catch (e) {}
+
+// --- Listeners ---
+form.addEventListener('input', scheduleSave);
+form.addEventListener('change', () => { scheduleSave(); updateVisualSelections(); });
+
+clearBtn.addEventListener('click', () => {
+  if (!confirm('Clear the whole form and start again?')) return;
+  form.reset();
+  try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+  updateVisualSelections();
+  autosaveText.textContent = 'Cleared. Your progress is saved automatically as you type.';
+  autosaveDot.classList.remove('saved');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// --- Client-side validation helper ---
+function validateClient(data) {
+  const errors = [];
+  if (!data.fund_name) errors.push('Fund name is required.');
+  if (!data.funder_name) errors.push('Funder name is required.');
+  if (!data.funder_type) errors.push('Funder type is required.');
+  if (!data.summary || data.summary.length < 20) errors.push('Please write at least 20 characters in the fund description.');
+  if (!data.deadline_model) errors.push('Select a deadline model.');
+  if (!data.status) errors.push('Select the current status.');
+  if (!Array.isArray(data.countries) || data.countries.length === 0) errors.push('Select at least one country.');
+  if (!data.work_type) errors.push('Select the type of work funded.');
+  if (!data.application_method) errors.push('Select an application method.');
+  if (!data.application_route) errors.push('Application URL or email is required.');
+  if (!data.contact_name) errors.push('Your name is required.');
+  if (!data.contact_email) errors.push('Your email is required.');
+  if (data.contact_email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.contact_email)) errors.push('Please enter a valid email address.');
+  if (!data.confirm_accuracy) errors.push('Please tick the confirmation box at the bottom.');
+  return errors;
+}
+
+// --- Submit ---
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  submitError.textContent = '';
+
+  const data = collectData();
+  const errs = validateClient(data);
+  if (errs.length) {
+    submitError.textContent = errs[0] + (errs.length > 1 ? ` (+${errs.length - 1} more)` : '');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Submitting…';
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY
+      },
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    if (!result.ok) {
+      submitError.textContent = result.message || 'Submission failed. Please try again.';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit fund intake';
+      return;
+    }
+    // Success
+    document.getElementById('reference-code').textContent = result.reference || '—';
+    form.style.display = 'none';
+    successEl.classList.add('show');
+    try { localStorage.removeItem(STORAGE_KEY); } catch (_) {}
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (err) {
+    submitError.textContent = 'Network error. Please check your connection and try again.';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit fund intake';
+  }
+});
+
+// Initial paint
+updateVisualSelections();
+</script>
+
+</body>
+</html>
